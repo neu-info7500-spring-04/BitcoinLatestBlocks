@@ -22,13 +22,19 @@ To get the project up and running on your local machine, follow these steps:
 
 First, clone the repository to your local machine:
 
-```bash
-git clone https://github.com/your-username/bitcoin-blocks-dashboard.git
-cd bitcoin-blocks-dashboard
-
-Install the necessary packages:
+set up the backend server：
+Install the required packages:
 npm install
 
-Start the development server:
+Start the backend server:
+node server.js
+
+set up the frontend application
+npm install
+
+Start the frontend development server:
 npm start
+
+Open your web browser and visit http://localhost:3000/ to view the Bitcoin Blocks Information Dashboard. 
+
 
