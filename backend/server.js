@@ -15,7 +15,7 @@ app.get('/api/blocks', async (req, res) => {
   const query = `
     {
       bitcoin {
-        blocks(options: {limit: 5, desc: ["height"]}) {
+        blocks(options: {limit: 1000, desc: ["height"]}) {
           height
           timestamp {
             time(format: "%Y-%m-%d %H:%M:%S")
@@ -23,9 +23,10 @@ app.get('/api/blocks', async (req, res) => {
           transactionCount
           blockSize
           blockWeight
+          difficulty
         }
       }
-    }
+    }  
   `;
 
   try {
