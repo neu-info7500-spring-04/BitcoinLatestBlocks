@@ -22,17 +22,16 @@ To get the project up and running on your local machine, follow these steps:
 
 First, clone the repository to your local machine:
 
-set up the backend server：
-Install the required packages:
+### set up the backend server：
 npm install
 
-Start the backend server:
+### Start the backend server:
 node server.js
 
-set up the frontend application
+### set up the frontend application
 npm install
 
-Start the frontend development server:
+### Start the frontend development server:
 npm start
 
 Open your web browser and visit http://localhost:3000/ to view the Bitcoin Blocks Information Dashboard. 
