@@ -6,6 +6,9 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px #ccc;
+  display: flex; 
+  flex-direction: column;
+  /* Removed min-height to prevent full vertical stretch */
 }
 
 .blocks-title {
@@ -30,4 +33,36 @@ th {
 
 tr:hover {
   background-color: #d7d7d7;
+}
+
+.pagination {
+  margin-top: 20px; /* Added to push the pagination below the table */
+  display: flex;
+  justify-content: flex-end; /* This will align the pagination to the right */
+  /* Removed the absolute positioning */
+}
+
+.page-button {
+  padding: 5px 15px;
+  margin-left: 10px; /* Adjusted for spacing between buttons */
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  outline: none;
+}
+
+.page-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.page-button:not(:disabled):hover {
+  background-color: #0056b3;
+}
+
+.page-info {
+  font-size: 16px;
 }

@@ -8,14 +8,17 @@ app.use(cors());
 app.use(express.json());
 
 const BITQUERY_API_URL = 'https://graphql.bitquery.io/';
-
 const BITQUERY_API_KEY = 'BQY359qn3S2O0aVwd126kMjYmm1Ebd0a';
 
 app.get('/api/blocks', async (req, res) => {
+  const page = parseInt(req.query.page) || 1; 
+  const perPage = parseInt(req.query.perPage) || 10; 
+  const offset = (page - 1) * perPage; 
+
   const query = `
     {
       bitcoin {
-        blocks(options: {limit: 1000, desc: ["height"]}) {
+        blocks(options: {limit: ${perPage}, offset: ${offset}, desc: ["height"]}) {
           height
           timestamp {
             time(format: "%Y-%m-%d %H:%M:%S")

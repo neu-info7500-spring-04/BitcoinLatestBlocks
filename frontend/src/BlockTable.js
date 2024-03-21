@@ -3,22 +3,48 @@ import './App.css';
 
 const BlocksTable = () => {
   const [blocks, setBlocks] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [blocksPerPage] = useState(10);
 
   useEffect(() => {
     fetchLatestBlocks();
     const interval = setInterval(fetchLatestBlocks, 60000);
     return () => clearInterval(interval);
-  }, []);
+  }, [currentPage]); // 添加currentPage作为依赖项
 
   const fetchLatestBlocks = async () => {
-    const response = await fetch('http://localhost:3001/api/blocks');
+    const response = await fetch(`http://localhost:3001/api/blocks?page=${currentPage}&perPage=${blocksPerPage}`);
     const data = await response.json();
     setBlocks(data.data.bitcoin.blocks);
   };
 
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
+
+  const Pagination = () => (
+    <div className="pagination">
+      <button 
+        className="page-button" 
+        onClick={() => handlePageChange(currentPage - 1)} 
+        disabled={currentPage === 1}
+      >
+        Previous
+      </button>
+      <span className="page-info">Page {currentPage}</span>
+      <button 
+        className="page-button" 
+        onClick={() => handlePageChange(currentPage + 1)}
+      >
+        Next
+      </button>
+    </div>
+  );
+
   return (
     <div className="table-container">
       <h2 className="blocks-title">Latest Bitcoin Blocks</h2>
+      <Pagination /> 
       <table>
         <thead>
           <tr>
